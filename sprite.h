@@ -6,28 +6,22 @@
 
 #include "sprite.h"
 #include "gl_texture.h"
+#include <glm/glm.hpp>
+#include "vertex.h"
 
 namespace JOGL
 {
-    class Sprite
+    /**
+     * \brief Sprite struct, keeps track of the position and texture.
+     */
+    struct Sprite
     {
-    public:
-        Sprite ()
-        {};
+        Sprite ( float x, float y, float width, float height, const Color& image_color, const std::string& image_path );
 
-        virtual ~Sprite ();
-
-        void init ( float _x, float _y, float _width, float _height, std::string texture_path );
-
-        void draw ( GLuint attrArray );
-
-    private:
-        float _x;
-        float _y;
-        float _width;
-        float _height;
-        GLuint _vboID;
-        GLTexture _texture;
+        glm::vec4 pos;
+        glm::vec4 uv;
+        Color color;
+        GLTexture texture;
     };
 }
 

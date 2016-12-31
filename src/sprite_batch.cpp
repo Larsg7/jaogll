@@ -1,6 +1,7 @@
 
 #include <algorithm>
 #include "../sprite_batch.h"
+#include "../logger.h"
 
 JOGL::Render_Batch::Render_Batch ( GLuint offset, GLuint numVertices, GLuint texture )
         : offset ( offset ), numVertices ( numVertices ), texture ( texture )
@@ -119,11 +120,12 @@ void JOGL::Sprite_Batch::createRenderBatches ()
     vertices[cv++] = _glyphs[0]->topLeft;
     offset += 6;
 
-    for ( int cg = 1; cg < _glyphs.size(); ++cg, offset += 6 ) // current glyph
+    for ( int cg = 1; cg < _glyphs.size(); ++cg ) // current glyph
     {
         if ( _glyphs[cg]->texture != _glyphs[cg-1]->texture )
         {
-            _renderBatches.emplace_back( 0, 6, _glyphs[cg]->texture );
+            _renderBatches.emplace_back( offset, 6, _glyphs[cg]->texture );
+            offset += 6;
         }
         else
         {
