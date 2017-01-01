@@ -1,3 +1,20 @@
+/*
+ * JAOGLL - a small OpenGl library and game engine.
+ * Copyright (C) 2017  Lars Gröber
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 #include <algorithm>
 #include "../sprite_batch.h"
@@ -46,8 +63,10 @@ void JOGL::Sprite_Batch::end ()
             });
             break;
         default:
+            JOGL::Logger::log( "Sort type unknown in class Sprite_Batch!", JOGL::LogLevel::LOG_Warning );
             break;
     }
+    //printf( "First glyph: %f\n", _glyphs.front()->bottomLeft.position.x );
 
     createRenderBatches();
 }
@@ -93,6 +112,7 @@ void JOGL::Sprite_Batch::render_batch ()
 
     for ( auto& r : _renderBatches )
     {
+        //printf( "Texture: %d, offset: %d, vertices: %d\n", r.texture, r.offset, r.numVertices );
         glBindTexture( GL_TEXTURE_2D, r.texture );
         glDrawArrays( GL_TRIANGLES, r.offset, r.numVertices );
     }
@@ -120,12 +140,11 @@ void JOGL::Sprite_Batch::createRenderBatches ()
     vertices[cv++] = _glyphs[0]->topLeft;
     offset += 6;
 
-    for ( int cg = 1; cg < _glyphs.size(); ++cg ) // current glyph
+    for ( int cg = 1; cg < _glyphs.size(); ++cg, offset += 6 ) // current glyph
     {
         if ( _glyphs[cg]->texture != _glyphs[cg-1]->texture )
         {
             _renderBatches.emplace_back( offset, 6, _glyphs[cg]->texture );
-            offset += 6;
         }
         else
         {
