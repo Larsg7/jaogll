@@ -24,6 +24,7 @@
 #include <memory>
 #include <vector>
 #include "vertex.h"
+#include "sprite.h"
 
 namespace JOGL
 {
@@ -98,8 +99,7 @@ namespace JOGL
          * \param color    Color of the sprite.
          * \param depth    Depth of the sprite.
          */
-        void add_sprite ( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, const Color& color,
-                          float depth );
+        void add_sprite ( JOGL::Sprite sprite );
 
         /**
          * \brief Binds _vao and draws Render_Batches.

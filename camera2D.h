@@ -46,7 +46,7 @@ namespace JOGL
 
         const glm::mat4& getCameraMatrix () const;
 
-        const glm::vec2 convert_screen_to_world ( glm::vec2& screenCoords );
+        const glm::vec2 convert_screen_to_world ( glm::vec2 screenCoords );
 
     private:
         int _screen_width;

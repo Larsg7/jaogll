@@ -52,7 +52,7 @@ void JOGL::Camera2D::update ()
 
 void JOGL::Camera2D::setPosition ( const glm::vec2& position )
 {
-    Camera2D::_position = position;
+    _position = position;
     _needsChange = true;
 }
 
@@ -63,7 +63,7 @@ const glm::vec2& JOGL::Camera2D::getPosition () const
 
 void JOGL::Camera2D::setScale ( float scale )
 {
-    Camera2D::_scale = scale;
+   _scale = scale;
     _needsChange = true;
 }
 
@@ -77,8 +77,10 @@ const glm::mat4& JOGL::Camera2D::getCameraMatrix () const
     return _cameraMatrix;
 }
 
-const glm::vec2 JOGL::Camera2D::convert_screen_to_world ( glm::vec2& screenCoords )
+const glm::vec2 JOGL::Camera2D::convert_screen_to_world ( glm::vec2 screenCoords )
 {
+    // invert y
+    screenCoords.y = _screen_height - screenCoords.y;
     // zero is center
     screenCoords -= glm::vec2 ( _screen_width / 2, _screen_height / 2 );
     // scale the coordinates

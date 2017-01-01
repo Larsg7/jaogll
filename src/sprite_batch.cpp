@@ -71,8 +71,7 @@ void JOGL::Sprite_Batch::end ()
     createRenderBatches();
 }
 
-void JOGL::Sprite_Batch::add_sprite ( const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture,
-                                      const Color& color, float depth )
+void JOGL::Sprite_Batch::add_sprite ( JOGL::Sprite sprite )
 {
     /*  -destRect.z->
      * TL----------TR  ^
@@ -82,24 +81,28 @@ void JOGL::Sprite_Batch::add_sprite ( const glm::vec4& destRect, const glm::vec4
      * BL----------BR
      */
 
+    glm::vec4 destRect = sprite.pos;
+    glm::vec4 uvRect = sprite.uv;
+
+
     glyph_ptr newGlyph ( new JOGL::Glyph );
 
-    newGlyph->texture = texture;
-    newGlyph->depth = depth;
+    newGlyph->texture = sprite.texture.id;
+    newGlyph->depth = sprite.depth;
 
-    newGlyph->topLeft.color = color;
+    newGlyph->topLeft.color = sprite.color;
     newGlyph->topLeft.setPosition( destRect.x, destRect.y + destRect.w );
     newGlyph->topLeft.setUV( uvRect.x, uvRect.y + uvRect.w );
 
-    newGlyph->bottomLeft.color = color;
+    newGlyph->bottomLeft.color = sprite.color;
     newGlyph->bottomLeft.setPosition( destRect.x, destRect.y );
     newGlyph->bottomLeft.setUV( uvRect.x, uvRect.y );
 
-    newGlyph->topRight.color = color;
+    newGlyph->topRight.color = sprite.color;
     newGlyph->topRight.setPosition( destRect.x + destRect.z, destRect.y + destRect.w );
     newGlyph->topRight.setUV( uvRect.x + uvRect.z, uvRect.y + uvRect.w);
 
-    newGlyph->bottomRight.color = color;
+    newGlyph->bottomRight.color = sprite.color;
     newGlyph->bottomRight.setPosition( destRect.x + destRect.z, destRect.y );
     newGlyph->bottomRight.setUV( uvRect.x + uvRect.z, uvRect.y );
 
