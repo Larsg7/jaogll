@@ -27,3 +27,14 @@ JOGL::Sprite::Sprite ( float x, float y, float width, float height, const Color&
     color = image_color;
     depth = sprite_depth;
 }
+
+const glm::vec2 JOGL::Sprite::get_middle () const
+{
+    return glm::vec2( pos.x + pos.z / 2, pos.y + pos.w / 2 );
+}
+
+void JOGL::Sprite::set_middle ( glm::vec2 middle )
+{
+    pos.x = middle.x - pos.z / 2;
+    pos.y = middle.y - pos.w / 2;
+}

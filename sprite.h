@@ -38,6 +38,10 @@ namespace JOGL
 
         Sprite ( float x, float y, float width, float height, const Color& image_color, const std::string& image_path, float sprite_depth );
 
+        const glm::vec2 get_middle () const;
+
+        void set_middle ( glm::vec2 middle );
+
         glm::vec4 pos;
         glm::vec4 uv;
         Color color;
