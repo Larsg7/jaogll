@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Larsg7/jaogll.svg?branch=travis)](https://travis-ci.org/Larsg7/jaogll) [![Version](https://img.shields.io/badge/version-v0.1--alpha-blue.svg)](https://img.shields.io/badge/version-v0.1--alpha-blue.svg)
+[![Build Status](https://travis-ci.org/Larsg7/jaogll.svg?branch=travis)](https://travis-ci.org/Larsg7/jaogll) [![Version](https://img.shields.io/badge/version-v0.1--alpha-blue.svg)](https://github.com/Larsg7/jaogll/releases)
 
 # JAOGLL
 
