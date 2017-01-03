@@ -42,6 +42,7 @@ namespace JOGL
 
         void set_middle ( glm::vec2 middle );
 
+        /** Position of the bottom left corner */
         glm::vec4 pos;
         glm::vec4 uv;
         Color color;
