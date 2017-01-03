@@ -1,0 +1,22 @@
+language: cpp
+compiler:
+ - gcc
+before_install:
+ - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+ - sudo apt-get update -q
+ - sudo apt-get install gcc-4.8 -y
+ - sudo apt-get build-dep -y libsdl1.2-dev
+ - sudo apt-get install -y mercurial
+ - sudo apt-get install -y libglew-dev
+ - sudo apt-get install -y libglm-dev
+ # install sdl2 form source
+ - mkdir sdl_lib && cd sdl_lib
+ - hg clone https://hg.libsdl.org/SDL
+ - cd SDL
+ - mkdir build && cd build
+ - ../configure
+ - make
+ - sudo make install
+ - cd ../../../
+script:
+ - make
