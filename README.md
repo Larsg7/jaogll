@@ -10,7 +10,7 @@ But if you want, here are the instructions:
 
 ## Dependencies
 
-You need to have SDL2, OpenGL, GLEW and C++11 installed.
+You need to have SDL2, OpenGL, GLM, GLEW and C++11 installed.
 
 ## Installation
 
