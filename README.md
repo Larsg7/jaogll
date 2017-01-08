@@ -2,15 +2,15 @@
 
 # JAOGLL
 
-JAOGLL - just another OpenGL library (_you know, naming is hard_) - is my personal small OpenGL library and game engine. It is still in heavy development and uses SDL2 as its window and input manager.
+JAOGLL - just another OpenGL library (_working title, you know, naming is hard_) - is my personal small OpenGL library and game engine. It is still in heavy development and uses SDL2 as its window and input manager.
 
-I would not advise anybody to use it, as it is pretty unfinished, unpolished and not well documented (all of that might change in the future).
+I would not advise anybody to use it at this stage, as it is still pretty unfinished, unpolished and not well documented.
 
 But if you want, here are the instructions:
 
 ## Dependencies
 
-You need to have SDL2, OpenGL and Glew in addition to g++ with c++11 support installed.
+You need to have SDL2, OpenGL, GLEW and C++11 installed.
 
 ## Installation
 
@@ -21,7 +21,7 @@ You need to have SDL2, OpenGL and Glew in addition to g++ with c++11 support ins
 
 ## Usage
 
-To compile your program run `g++ source-files -lSDL2 -lGL -lGLEW -ljaogll`.
+Compile your program with `-lSDL2 -lGL -lGLEW -ljaogll`.
 Documentation is in the works (a bit...maybe).
 
 ## Acknowledgements
